@@ -1,7 +1,8 @@
-import type { CollectionConfig, FieldHook } from 'payload'
+import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
+import type { CollectionConfig } from 'payload'
+import { STATUS_OPTIONS } from './constants'
 import { generateContentSummaryHook } from './hooks/generate-content-summary.hook'
 import { generateSlugHook } from './hooks/generate-slug.hook'
-import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
 
 export const Articles: CollectionConfig = {
     slug: 'articles',
@@ -67,8 +68,8 @@ export const Articles: CollectionConfig = {
             name: 'status',
             type: 'select',
             required: true,
-            options: ['Draft', 'Published'],
-            defaultValue: 'Draft',
+            options: Object.values(STATUS_OPTIONS),
+            defaultValue: STATUS_OPTIONS.DRAFT,
         },
         {
             name: 'publishedAt',
