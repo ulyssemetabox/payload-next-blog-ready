@@ -1,9 +1,6 @@
 import { getPublishedArticles } from '@/collections/Articles/fetchers'
 import { ArticleCard } from './_components/article-card'
-
-function relationIsObject<T>(relation: number | T): relation is T {
-    return typeof relation !== 'number'
-}
+import { relationIsObject } from '@/lib/payload/helpers/relation-is-object'
 
 export default async function BlogIndexPage() {
     const articles = await getPublishedArticles()
