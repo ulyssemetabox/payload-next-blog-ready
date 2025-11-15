@@ -1,8 +1,9 @@
 import { convertLexicalToPlaintext } from '@payloadcms/richtext-lexical/plaintext'
 import type { CollectionConfig } from 'payload'
-import { STATUS_OPTIONS } from './constants'
+import { CACHE_TAG_ARTICLES, STATUS_OPTIONS } from './constants'
 import { generateContentSummaryHook } from './hooks/generate-content-summary.hook'
 import { generateSlugHook } from './hooks/generate-slug.hook'
+import { revalidateTag } from 'next/cache'
 
 export const Articles: CollectionConfig = {
     slug: 'articles',
@@ -81,4 +82,7 @@ export const Articles: CollectionConfig = {
             },
         },
     ],
+    hooks: {
+        afterChange: [() => revalidateTag(CACHE_TAG_ARTICLES)],
+    },
 }
