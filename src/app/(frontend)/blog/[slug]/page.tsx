@@ -43,6 +43,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 width={600}
                 height={300}
                 className="w-full rounded-md object-center object-cover"
+                placeholder="blur"
+                blurDataURL={article.coverImage.blurDataUrl}
             />
 
             {/* content */}
