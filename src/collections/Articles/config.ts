@@ -83,6 +83,6 @@ export const Articles: CollectionConfig = {
         },
     ],
     hooks: {
-        afterChange: [() => revalidateTag(CACHE_TAG_ARTICLES)],
+        afterChange: [() => revalidateTag(CACHE_TAG_ARTICLES, {expire: 0})],
     },
 }
